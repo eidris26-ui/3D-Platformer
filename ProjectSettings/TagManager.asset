@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Goblin Body
   - Goblin Head
+  - Token
   layers:
   - Default
   - TransparentFX
