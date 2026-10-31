@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class WaypointFollower : MonoBehaviour
 {
-    public GameObject[] waypoints; // GameObject Is an Array Meaning It Contains Multiple Variables
+    [SerializeField] GameObject[] waypoints; // GameObject Is an Array Meaning It Contains Multiple Variables
     int currentWaypointIndex = 0;
 
-    public float speed = 1f;
+    [SerializeField] float speed = 1f;
 
 
 

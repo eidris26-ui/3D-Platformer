@@ -7,32 +7,52 @@ using UnityEngine.InputSystem;
 public class ClayMovement : MonoBehaviour
 {
     Rigidbody rb;
-    public float movementSpeed = 6f; // Making a Variable Public AllowsIt To Be Seen In Unity So You Can Change Movement Speed Without Needing To Code
-    public float jumpForce = 5f; // Making a Variable Public AllowsIt To Be Seen In Unity So You Can Change Movement Speed Without Needing To Code
+    [SerializeField] float movementSpeed = 6f; // Making A Variable A Serialize Field Allows It To Be Seen In Unity So You Can Change Movement Speed Without Needing To Code
+    [SerializeField] float jumpForce = 5f; 
 
-    public Transform groundCheck; // Called Transform Because That Is What The Position Component Is Called
-    public LayerMask ground; // Ground Is A Custom Layer We Created In LayerMask, We Can Now Change The Values Inside That Layer
+    [SerializeField] Transform groundCheck; // Called Transform Because That Is What The Position Component Is Called
+    [SerializeField] LayerMask ground; // Ground Is A Custom Layer We Created In LayerMask, We Can Now Change The Values Inside That Layer
+
+    [SerializeField] AudioSource jumpSound; // Makes Audio Source Public Audio Source Allows Us To Add Audio To Our Game
+    [SerializeField] AudioSource goblinDeath; // Makes Audio Source Public
+
+    [SerializeField] float mouseSensitivity = 0.15f;
+    InputAction lookAction;
+
     void Start()
     {
+        lookAction = InputSystem.actions.FindAction("Look");
+        Cursor.lockState = CursorLockMode.Locked;
+
         rb = GetComponent<Rigidbody>(); // This Finds The Rigidbody
     }
     void Update()
     {
+        float mouseX = lookAction.ReadValue<Vector2>().x * mouseSensitivity;
+        transform.Rotate(0f, mouseX, 0f);
 
-        float horizontalInput = Input.GetAxis("Horizontal");
+       // Vector3 move = (transform.forward * input.y
+      //                + transform.right * input.x) * movementSpeed;
+     //  rb.linearVelocity = new Vector3(move.x, rb.linearVelocity.y, move.z);
+
+
+        float horizontalInput = Input.GetAxis("Horizontal"); 
         float verticalInput = Input.GetAxis("Vertical");
         rb.linearVelocity = new Vector3(horizontalInput * movementSpeed, rb.linearVelocity.y, verticalInput * movementSpeed);
 
         if (Input.GetButtonDown("Jump") & IsGrounded())
         {
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
+            jumpSound.Play();
         }
     }
 
     void Jump()
-        { 
-          rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
+        {
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
+        goblinDeath.Play();
         }
+
       private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.CompareTag("Goblin Head"))

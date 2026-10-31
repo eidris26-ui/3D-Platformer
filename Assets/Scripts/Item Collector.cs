@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ItemCollector : MonoBehaviour
 {
     int tokens = 0; // This Is The Token Counter
+
+    [SerializeField] TMP_Text tokensText;
+    [SerializeField] AudioSource CollectionSound;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -12,7 +16,8 @@ public class ItemCollector : MonoBehaviour
         {
             Destroy(other.gameObject);
             tokens++;
-            Debug.Log("Tokens:" + tokens);
+             tokensText.text = "Tokens:" + tokens;
+            CollectionSound.Play();
         }
 
     }
