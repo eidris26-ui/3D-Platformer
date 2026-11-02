@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ClayDeath : MonoBehaviour
 {
-    public AudioSource deathsound;
+    [SerializeField] AudioSource deathSound;
     bool dead = false;
 
 
@@ -34,7 +34,7 @@ public class ClayDeath : MonoBehaviour
     {
         Invoke(nameof(ReloadLevel), 1.3f); // This Sends Clay Back To The Start I.e Restarts The Level
         dead = true;
-        deathsound.Play();
+        deathSound.Play();
     }
 
     void ReloadLevel()
