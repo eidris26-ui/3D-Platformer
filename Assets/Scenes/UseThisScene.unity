@@ -1551,7 +1551,7 @@ MonoBehaviour:
     m_Bits: 64
   jumpSound: {fileID: 892474028}
   goblinDeath: {fileID: 892474029}
-  mouseSensitivity: 0.15
+  mouseSensitivity: 0.1
 --- !u!114 &892474026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2387,7 +2387,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6038111156514218419, guid: 27df6bfd462f6884389bb33856bf7b59, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.53
+      value: 3.09
       objectReference: {fileID: 0}
     - target: {fileID: 6038111156514218419, guid: 27df6bfd462f6884389bb33856bf7b59, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4487,7 +4487,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 033766cc31c97904bae4404b8a079544, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.503
+  m_Volume: 0.442
   m_Pitch: 1
   Loop: 1
   Mute: 0
