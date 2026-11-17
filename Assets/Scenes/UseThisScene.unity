@@ -1564,7 +1564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abbdadd5ce07841408aa90737b213439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClayDeath
-  deathsound: {fileID: 892474032}
+  deathSound: {fileID: 0}
 --- !u!114 &892474027
 MonoBehaviour:
   m_ObjectHideFlags: 0
