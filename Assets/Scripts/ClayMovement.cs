@@ -7,8 +7,8 @@ using UnityEngine.InputSystem;
 public class ClayMovement : MonoBehaviour
 {
     Rigidbody rb;
-    [SerializeField] float movementSpeed = 6f; // Making A Variable A Serialize Field Allows It To Be Seen In Unity So You Can Change Movement Speed Without Needing To Code
-    [SerializeField] float jumpForce = 5f; 
+     public float movementSpeed = 5f; // Making A Variable A Serialize Field Allows It To Be Seen In Unity So You Can Change Movement Speed Without Needing To Code
+     public float jumpForce = 5f; 
 
     [SerializeField] Transform groundCheck; // Called Transform Because That Is What The Position Component Is Called
     [SerializeField] LayerMask ground; // Ground Is A Custom Layer We Created In LayerMask, We Can Now Change The Values Inside That Layer

@@ -9,16 +9,30 @@ public class ItemCollector : MonoBehaviour
 
     [SerializeField] TMP_Text tokensText;
     [SerializeField] AudioSource CollectionSound;
+	[SerializeField] AudioSource CollectionSound2;
 
-    private void OnTriggerEnter(Collider other)
+	private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Token"))
         {
             Destroy(other.gameObject);
             tokens++;
-             tokensText.text = "Tokens:" + tokens;
+            tokensText.text = "Tokens:" + tokens;
             CollectionSound.Play();
         }
+
+    }
+
+    int items = 0;
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Items"))
+        {
+            Destroy(other.gameObject);
+            items++;
+            CollectionSound2.Play();
+        }
+
 
     }
 }
