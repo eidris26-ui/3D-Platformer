@@ -30,27 +30,41 @@ public class DoorRaycast : MonoBehaviour
         {
             if (hit.collider.CompareTag(interactableTag))
             {
-                if(!doOnce)
+                if (!doOnce)
                 {
                     raycastedObj = hit.collider.gameObject.GetComponent<MyDoorController>();
-                    
+                    CrosshairChange(true);
                 }
-
-
-
-
-
-
-            }
-
-
-
-
-
-
-
+                isCrosshairActive = true;
+                doOnce = true;
+                if (Input.GetKeyDown(openDoorKey))
+                {
+                    raycastedObj.PlayAnimation();
+                }
+            }     
         }
 
-            
-    }
+		else
+		{
+			if (isCrosshairActive)
+			{
+				CrosshairChange(false);
+				doOnce = false;
+			}
+		}
+
+        void CrosshairChange(bool on)
+        {
+            if (on && !doOnce)
+            {
+                crosshair.color = Color.red;
+            }
+            else
+            {
+                crosshair.color = Color.white;
+                isCrosshairActive = false;
+            }
+
+        }
+	}
 }

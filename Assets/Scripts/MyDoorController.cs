@@ -2,15 +2,27 @@ using UnityEngine;
 
 public class MyDoorController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+	private Animator doorAnim;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	private bool doorOpen = false;
+
+	private void Awake()
+	{
+		doorAnim = gameObject.GetComponent<Animator>();
+	}
+
+	public void PlayAnimation()
+	{
+		if (!doorOpen)
+		{
+			doorAnim.Play("Door~Open", 0, 0.0f);
+			doorOpen = true;
+		}
+		else
+		{
+			doorAnim.Play("DoorClose", 0, 0.0f);
+			doorOpen = false;
+		}
+	}
+
 }
