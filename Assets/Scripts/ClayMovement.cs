@@ -24,7 +24,7 @@ public class ClayMovement : MonoBehaviour
         lookAction = InputSystem.actions.FindAction("Look");
         Cursor.lockState = CursorLockMode.Locked;
 
-        rb = GetComponent<Rigidbody>(); // This Finds The Rigidbody
+              rb = GetComponent<Rigidbody>(); // This Finds The Rigidbody
     }
     void Update()
     {
@@ -36,7 +36,7 @@ public class ClayMovement : MonoBehaviour
      //  rb.linearVelocity = new Vector3(move.x, rb.linearVelocity.y, move.z);
 
 
-        float horizontalInput = Input.GetAxis("Horizontal"); 
+              float horizontalInput = Input.GetAxis("Horizontal"); 
         float verticalInput = Input.GetAxis("Vertical");
         rb.linearVelocity = new Vector3(horizontalInput * movementSpeed, rb.linearVelocity.y, verticalInput * movementSpeed);
 
