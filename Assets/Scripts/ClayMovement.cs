@@ -28,17 +28,20 @@ public class ClayMovement : MonoBehaviour
     }
     void Update()
     {
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+        rb.linearVelocity = new Vector3(horizontalInput * movementSpeed, rb.linearVelocity.y, verticalInput * movementSpeed);
+
         float mouseX = lookAction.ReadValue<Vector2>().x * mouseSensitivity;
         transform.Rotate(0f, mouseX, 0f);
 
-       // Vector3 move = (transform.forward * input.y
-      //                + transform.right * input.x) * movementSpeed;
-     //  rb.linearVelocity = new Vector3(move.x, rb.linearVelocity.y, move.z);
+       Vector3 move = (transform.right * horizontalInput
+                    + transform.forward * verticalInput) * movementSpeed;
+        move = Vector3.ClampMagnitude(move, 1f);
 
+        rb.linearVelocity = new Vector3(move.x * movementSpeed,
+            rb.linearVelocity.y, move.z * movementSpeed);
 
-              float horizontalInput = Input.GetAxis("Horizontal"); 
-        float verticalInput = Input.GetAxis("Vertical");
-        rb.linearVelocity = new Vector3(horizontalInput * movementSpeed, rb.linearVelocity.y, verticalInput * movementSpeed);
 
         if (Input.GetButtonDown("Jump") & IsGrounded())
         {
